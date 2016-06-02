@@ -4,9 +4,14 @@ import redis
 import telepot
 import telepot.async
 
-redis_connection = redis.StrictRedis()
-sudo_members = [111111111]
-TOKEN = "TOKEN_HERE"
+sudo_members = [11111111]
+
+TOKEN = "Token"
+
+db = redis.Redis(
+    host=127.0.0.1,
+    port=6379,
+    password=None)
 
 
 def check_sudo(chat_id):
