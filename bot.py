@@ -34,6 +34,9 @@ cron.start()#start the cron
 load_bot()#Load bot
 @asyncio.coroutine
 def msg_processor(msg):
+    step = db.hget("users:"+str(msg['chat']['id']),"step")
+    if step:
+        msg["text"] = "!!{} ".format(step) + msg["text"]
     if "data" in msg:
         msg["chat"] = {}
         msg["chat"]["type"] = "callback"
