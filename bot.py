@@ -34,8 +34,8 @@ cron.start()#start the cron
 load_bot()#Load bot
 @asyncio.coroutine
 def msg_processor(msg):
-    step = db.hget("users:"+str(msg['chat']['id']),"step")
-    if step:
+    step = db.hget("users:"+str(msg['from']['id']),"step")
+    if step and "text" in msg:
         msg["text"] = "!!{} ".format(step) + msg["text"]
     if "data" in msg:
         msg["chat"] = {}
